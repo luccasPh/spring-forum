@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  app:
+    image: 'spring-forum:latest'
+    build:
+      context: .
+    container_name: forum-app
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=jdbc:postgresql://db:5432/forum
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=123
+      - JWT_SECRET="rm'!@N=Ke!~p8VTA2ZRK~nMDQX5Uvm!m'D&]{@Vr?G;2?XhbC:Qa#9#eMLN\}x3?JR3.2zr~v)gYF^8\:8>:XfB:Ww75N/emt9Yj[bQMNCWwW\J?N,nvH.<2\.r~w]*e~vgak)X"v8H`MH/7"2E`,^k@n<vE-wD3g9JWPy;CrY*.Kd2_D])=><D?YhBaSua5hW%{2]_FVXzb9`8FH^b[X3jzVER&:jw2<=c38=>L/zBq`}C6tT*cCSVC^c]-L}&/"
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - 8080:8080 
+
+  db:
+    image: 'postgres'
+    container_name: forum-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=forum

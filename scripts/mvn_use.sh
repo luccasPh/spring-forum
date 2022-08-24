@@ -1,0 +1,1 @@
+alias mvn="JAVA_HOME=/Users/lucaspinheiro/.sdkman/candidates/java/11.0.15-tem && mvn"
